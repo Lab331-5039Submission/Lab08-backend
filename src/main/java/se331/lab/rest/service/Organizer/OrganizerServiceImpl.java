@@ -1,12 +1,10 @@
-package se331.lab.rest.service;
+package se331.lab.rest.service.Organizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
-import se331.lab.rest.dao.OrganizerDao;
+import se331.lab.rest.dao.Organizer.OrganizerDao;
 import se331.lab.rest.entity.Organizer;
-
-import java.util.List;
 
 @Service
 public class OrganizerServiceImpl implements OrganizerService {
@@ -14,8 +12,13 @@ public class OrganizerServiceImpl implements OrganizerService {
     OrganizerDao organizerDao;
 
     @Override
+    public Integer getOrganizerSize() {
+        return organizerDao.getOrganizerSize();
+    }
+
+    @Override
     public Page<Organizer> getOrganizers(Integer pageSize, Integer page) {
-        return organizerDao.getOrganizers(pageSize,page);
+        return organizerDao.getOrganizers(pageSize, page);
     }
 
     @Override
@@ -24,7 +27,7 @@ public class OrganizerServiceImpl implements OrganizerService {
     }
 
     @Override
-    public Organizer save(Organizer org) {
-        return organizerDao.save(org);
+    public Organizer save(Organizer organizer) {
+        return organizerDao.save(organizer);
     }
 }
