@@ -5,13 +5,13 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     ports:
       - 3306:3306
-    environment: 
+    environment:
       MYSQL_ROOT_PASSWORD: password
   phpmyadmin:
     image: phpmyadmin
     restart: always
     ports:
-      -9000:80
-    environment: 
+      - 9000:80
+    environment:
       PMA_HOST: db
-      MYSQL_ROOT_PASSWORD : password
+      MYSQL_ROOT_PASSWORD: password
