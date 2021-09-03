@@ -17,8 +17,8 @@ public class EventDaoDbImpl implements EventDao {
     EventRepository eventRepository;
 
     @Override
-    public Integer getEventSize() {
-        return Math.toIntExact(eventRepository.count());
+    public Event save(Event event){
+        return eventRepository.save(event);
     }
 
     @Override

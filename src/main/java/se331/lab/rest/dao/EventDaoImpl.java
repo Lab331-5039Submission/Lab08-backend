@@ -88,11 +88,6 @@ public class EventDaoImpl implements EventDao {
     }
 
     @Override
-    public Integer getEventSize() {
-        return eventList.size();
-    }
-
-    @Override
     public Page<Event> getEvents(Integer pageSize, Integer page) {
         pageSize = pageSize == null ? eventList.size() : pageSize;
         page = page == null ? 1 : page;
@@ -103,5 +98,12 @@ public class EventDaoImpl implements EventDao {
     @Override
     public Event getEvent(Long id) {
         return eventList.stream().filter(event -> event.getId().equals(id)).findFirst().orElse(null);
+    }
+
+    @Override
+    public Event save(Event event){
+        event.setId(eventList.get(eventList.size()-1).getId()+1);
+        eventList.add(event);
+        return event;
     }
 }

@@ -12,10 +12,6 @@ import java.util.List;
 public class EventServiceImpl implements EventService{
     @Autowired
     EventDao eventDao;
-    @Override
-    public Integer getEventSize() {
-        return eventDao.getEventSize();
-    }
 
     @Override
     public Page<Event> getEvents(Integer pageSize, Integer page) {
@@ -25,5 +21,10 @@ public class EventServiceImpl implements EventService{
     @Override
     public Event getEvent(Long id) {
         return eventDao.getEvent(id);
+    }
+
+    @Override
+    public Event save(Event event){
+        return eventDao.save(event);
     }
 }
